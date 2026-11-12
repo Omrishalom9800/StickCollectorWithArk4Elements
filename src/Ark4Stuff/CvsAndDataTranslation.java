@@ -25,14 +25,14 @@ public static String arrayToCvsString(String[] array){// takes the items from ar
     return cvs.toString();// could return an empty string, ""
 }
 
-public static String[] cvsStringToData(String cvs){ // for convince
-    return cvs.split(",");
+public static String[] cvsStringToData(String line){ // for convince
+    return line.split(","); // splits the string up into an array
 }
 
 
 //stick specific methods
 
-public static String[] stickToArray(stick stick){
+public static String[] stickToArray(stick stick){ // converts a stick to a three index array of data
     // a sticks constructor is 'name, stif, ans str'
     String[] data = new String[3];
     data[0] = stick.getName();
@@ -41,7 +41,7 @@ public static String[] stickToArray(stick stick){
     return data;
 }
 
-public static stick dataToStick(String[] data){
+public static stick dataToStick(String[] data){ // converts an array to a stick obj
 
     try{
         return new stick(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]));
@@ -72,14 +72,14 @@ public static ArrayList<stick> restoreStickData(){ // search through stick stora
                 }
             }
         }catch (Exception e){
-            //no need to print, this will fail
+            //no need to print, this will commonly fail
         }
     }
     return collection;
 }
 
     public static void saveStick(stick stic){ //easy way to save sticks
-
+                                                // turns the stick into array, then string, then puts it on the file
             try {
             String[] data = stickToArray(stic);
             String cvs = arrayToCvsString(data);
@@ -95,8 +95,8 @@ public static ArrayList<stick> restoreStickData(){ // search through stick stora
 
     // game data specific methods
 
-    public static void saveGameState(){ // stores health, level
-// not done
+    public static void saveGameState(){ // stores health, level, etc.
+    // not done, ran out of time
     }
 
 

@@ -46,7 +46,7 @@ public class FileTampering {
     return false;
     }
 
-    public static void writeToFile(String fileName, String text){ // will override the previous text
+    public static void writeToFile(String fileName, String text){ // will override the previous text in the file with new text
 
         try { // safety net
 
@@ -99,7 +99,7 @@ public class FileTampering {
     }
 
 
-    public static String readLineFromFile(String fileName, int line){ // this will give the specif line back, there is one.
+    public static String readLineFromFile(String fileName, int line){ // this will give the specif line back, if there is one.
         Path path = Path.of(fileName); // make the file reference storer
 
         try (Stream<String> lines = Files.lines(path)){ // safety net. this will also make a var called lines
@@ -122,7 +122,7 @@ public class FileTampering {
     }
 
 
-    public static int fileLineCount (String fileName){
+    public static int fileLineCount (String fileName){//how many lines are in the file
         int lineCounter= 1; // for some reason it always gives back one less, so it stars as 1 to offset it
 
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){ // make an file reader obj that will scroll through the file until it find nothing

@@ -29,7 +29,7 @@ public class Main {
         confirmFile(stickFileName);
 
 
-        if(false) { // testing stuff, disabled
+        if(false) { // testing stuff, disabled right now
             print(confirmFile(stickFileName));
             writeToFile(stickFileName, "");
             saveStick(makeRandomWeapon(3));
