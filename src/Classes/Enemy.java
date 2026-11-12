@@ -11,6 +11,7 @@ import static Methods.print.*;
 //get classes
 import Classes.StickStorage.*;
 import Classes.Stick.*;
+import static Classes.Stick.*;
 
 
 public class Enemy {
@@ -18,9 +19,10 @@ public class Enemy {
 
         //metadata------------------------------------
 
-        private int health = 8;
+        private int health = 4;
         private stick primaryWeapon; // enemies only get one weapon
         private String name = "-1";
+        private int level = 1;
 
         // attacking
         private int currectAttackIndex = 0;
@@ -31,6 +33,7 @@ public class Enemy {
         public enemy(String n, int level) { // call a function to randomize the enemy
             this.name = n;
             this.health = this.health + level;
+            this.level = level;
             if (n.equals("randomName")) {
                 this.name = randomName() + " " + randomLastName();
             }
@@ -48,7 +51,11 @@ public class Enemy {
 
             pause(1500);
 
-            double damage = blockSomething(randomNumber(10, 15), randomNumber(25, 35)); // play mini game
+            int speedBonus = level;
+            if(speedBonus>10){
+                speedBonus=10;
+            }
+            double damage = blockSomething(randomNumber(10+speedBonus, 15+speedBonus), randomNumber(25, 35)); // play mini game
 
             if (damage > 0) {
                 if (weapon.damageStick()) {
@@ -59,7 +66,7 @@ public class Enemy {
                     if (weapon.getName().equals("fists")) {   // make sure fists dont brake
                         weapon.setStiffness(999999);
                     } else {
-                        print(weapon.getName() + " lost stiffness."); // if not fists and broken
+                        print(weapon.getName() + " lost stiffness. "+weapon.getStiffness() +" more hits and the stick breaks."); // if not fists and broken
                     }
                 }
 
@@ -83,14 +90,11 @@ public class Enemy {
             damage = damage * (double) weapon.getStrength(); // strength multiplier
             damage = (int) Math.ceil(damage);// round up
             print("You did " + damage + " damage with " + weapon.getName());
+            health = health - (int)damage;
             pause(1000);
             return (int) damage;
         }
 
-        public stick makeRandomWeapon(int level) {
-            stick newWeapon = new stick(randomStickName(), randomNumber(2, level), randomNumber(1, level), "default");
-            return newWeapon;
-        }
 
         //gets/sets----------------------------------------
 

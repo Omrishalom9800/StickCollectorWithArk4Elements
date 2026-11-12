@@ -1,20 +1,14 @@
 package Ark4Stuff;
 
-import java.io.File;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import java.io.IOException;
-import java.sql.Array;
 import java.util.Optional;
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
 //get methods
-import static Methods.OtherFunctions.*;
-import static Methods.MiniGames.*;
-import static Methods.RequireInput.*;
 import static Methods.print.*;
 
 //get classes
@@ -27,8 +21,9 @@ import Classes.Enemy.*;
 
 public class FileTampering {
 
-    String stickFileName = "stickStorage.txt"; // saves stick collection
-    String gameFileName = "gameStorage.txt"; // saves other things (health, wave, enemy)
+    //global names
+    public static String stickFileName = "stickStorage.txt"; // saves stick collection
+    public static String gameFileName = "gameStorage.txt"; // saves other things (health, wave, enemy)
 
     public static boolean confirmFile(String fileName){ // makes a file if none already and returns weather it did.
 
@@ -67,6 +62,25 @@ public class FileTampering {
 
     }
 
+    public static void writeWithoutClear(String fileName, String text, boolean newLine){
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){ // safety net. makes a writer that will append things,
+            // Lines
+
+            if(newLine){
+                writer.newLine();
+            }
+
+        writer.write(text);
+
+        } catch(Exception e) {
+            print("write without clear method errored." +
+                    "\n Can't get from "+fileName+" file. so progress may not be saved.");
+        }
+    }
+
+
+
     public static String readFromFile(String fileName){ // this will give Everything in the file back
 
         try { // safety net
@@ -90,20 +104,51 @@ public class FileTampering {
 
         try (Stream<String> lines = Files.lines(path)){ // safety net. this will also make a var called lines
             // Lines
-            Optional<String> data = lines.skip(line -1).findFirst(); // this gets the line. it might not be a string so optional is there
+            Optional<String> data = lines.skip(line -1).findFirst(); // this gets the line. it might be null so optional is there
 
             if(data.isPresent()){ // if theres nothing it will return null
-                return data + ""; // force it to string
+
+                String betterData = data.orElse(""); // optionals are cool vars that dont crash when null is in them.
+                                                            // in this senoiry the optional will turn to string, or if null just be "".
+                return betterData;
             }
 
-        } catch(Exception e) {
-            print("read method errored." +
-                    "\n Can't get from "+fileName+" file, line "+ line+". so progress may not have saved, or the file is weird." +
-                    "\n returning null.");
+        } catch(Exception e) {// expected to fail at some point during runtime, no need to warn the user
+          //  print("read method errored." +
+          //          "\n Can't get from "+fileName+" file, line "+ line+". so progress may not have saved, or the file is weird." +
+          //          "\n returning null.");
         }
         return null;
     }
 
+
+    public static int fileLineCount (String fileName){
+        int lineCounter= 1; // for some reason it always gives back one less, so it stars as 1 to offset it
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){ // make an file reader obj that will scroll through the file until it find nothing
+
+            while (reader.readLine() != null){
+                lineCounter++;
+            }
+
+        }catch(Exception e){
+            print("file line count errored"+
+                    "\n Accessing data from " + fileName + " file may be inaccurate.");
+        }
+        return lineCounter;
+    }
+
+
+    public static boolean fileEmpty(String fileName){ // is there something in the file, does not check if we can use the something
+
+        File file = new File(fileName);
+        if(file.exists()){
+            if(file.length() <= 0){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

@@ -11,26 +11,53 @@ import Classes.StickStorage.*;
 import Classes.Enemy.*;
 
 public class Stick {
+
+
+    public static stick makeRandomWeapon(int level) {
+
+        int strMin = level; // make weapon hover around a certain str range
+        if(level -3 <= 2){
+            strMin = 2;
+        }
+
+        if(level>15){ // just start giving absolutely random weapons
+            strMin = 3;
+        }
+
+        int stif = level;
+        if(stif > 8) { // dont let stiffness get over 8
+            stif = 8;
+        }
+
+        String stickName = randomObjectName();
+        if(level > 10){ // make sticks more unique after ten
+            stickName = stickName + " " + randomObjectName();
+        }
+
+
+        stick newWeapon = new stick(stickName + " stick", randomNumber(2, stif), randomNumber(strMin-3, level+2));
+        return newWeapon;
+    }
+
     public static class stick {
 
         //metadata-----------
         private String name; // cool name
-        private int stiffness; // how many avalible blocks before it breaks // also unnecessary
+        private int stiffness; // how many avalible blocks before it breaks
         private int strength; // damage
-        private String attackType; // what minigame plays when attacking, also unnecessary
+       // private String attackType; // what minigame plays when attacking, also unnecessary
         private double value; // sell price
         private int id; // creation id, should never change
 
         public static int totalSticks; // total number of sticks made
 
         // constructor--------
-        public stick(String Name, int Stiff, int Str, String aT) {
+        public stick(String Name, int Stiff, int Str) {
 
             this.name = Name;
             //this.wood = Wood;
             this.stiffness = Stiff;
             this.strength = Str;
-            this.attackType = aT;
 
             this.value = calculateValue();
 
@@ -84,11 +111,15 @@ public class Stick {
             return isBroken();
         }
 
+        public void setStrength(int newStr) {
+            strength = newStr;
+        }
         public boolean damageStick() {
             stiffness--;
             return isBroken();
         }
-        // crickets
 
     }
+
+
 }

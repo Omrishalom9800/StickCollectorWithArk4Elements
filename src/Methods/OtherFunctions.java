@@ -82,7 +82,7 @@ public class OtherFunctions {
     }
 
 
-    public static String randomStickName() {
+    public static String randomObjectName() {
 
         String[] nameList;
         nameList = new String[]{
@@ -92,12 +92,23 @@ public class OtherFunctions {
                 "Glove", "Key", "Lock", "Mug", "Nail", "Pencil", "Ruler", "1Shoe", "Sock", "Tape",
                 "Box", "Bag", "Bottle", "Bowl", "Brush", "Candle", "Coin", "Comb", "Couch", "Cup",
                 "Dice", "Flag", "Frame", "Hammer", "Kite", "Mirror", "Pillow", "Radio", "Soap", "Towel",
-                "tung tung", "bat", "cool"
+                "tung tung", "bat", "cool", "shark", "hedgehog", "pine", "avalanche", "flamingo",
+                "glacier", "tadpole", "cactus", "pebble", "badger", "tornado", "orchid", "oyster",
+                "volcano", "sparrow", "moss", "walrus", "coral", "blizzard", "firefly", "stopwatch",
+                "stapler", "lantern", "thimble", "umbrella", "compass", "wrench", "doorknob", "magnet",
+                "pendulum", "paperclip", "corkscrew", "binoculars", "whisk", "padlock", "anvil", "typewriter",
+                "hourglass", "trowel", "thermos", "pretzel", "cinnamon", "avocado", "espresso", "croissant",
+                "artichoke", "dumpling", "hazelnut", "marmalade", "radish", "pancake", "vanilla", "apricot",
+                "macaroni", "sourdough", "pistachio", "peppercorn", "custard", "turnip", "granola", "lighthouse",
+                "gazebo", "canyon", "library", "orchard", "labyrinth", "harbor", "attic", "greenhouse", "" +
+                "viaduct", "observatory", "fortress", "lagoon", "staircase", "bakery", "alleyway",
+                "amphitheater", "dockyard", "courtyard", "bunker", "cardigan", "monocle", "harmonica", "quilt",
+                "kaleidoscope", "origami", "tapestry", "blueprint", "locket", "souvenir", "tambourine", "shoelace",
+                "bookmark", "apron", "confetti", "parachute", "satellite", "teapot", "trophy", "carousel"
+
         };
 
-        String name = nameList[randomNumber(0, nameList.length)];
-
-        return name + " stick";
+        return nameList[randomNumber(0, nameList.length)];
     }
 
 

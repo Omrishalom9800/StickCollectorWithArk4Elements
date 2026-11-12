@@ -22,7 +22,7 @@ public class MiniGames {
 // making a buffer will give system.in.read a place to put the input stream that I don't want
 
     // wack stuff mini game
-    public static int wackSomething(int speed, int length) throws IOException {
+    public static double wackSomething(int speed, int length) throws IOException {
         // returns a damage multiplier (which is 0,1,and 2)
         // the goal is to hit the X or near the X when cursor is on it
 
@@ -58,7 +58,7 @@ public class MiniGames {
                 targetRow = targetRow + "-";
             }
         }
-        int damage = -1;// initializing damage (this is the thing getting returned)
+        double damage = -1;// initializing damage (this is the thing getting returned)
         int gameI = 0; //how many times has the loop looped
         while (!didHit) {
             gameI++;
@@ -104,7 +104,7 @@ public class MiniGames {
                     damage = 2; // double damage
                     print("DoubleDamage!!");
                 } else {// is it not close
-                    damage = 0; // missed
+                    damage = 0.5; // missed
                     print("miss..");
                 }
 

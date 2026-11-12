@@ -16,7 +16,7 @@ public class StickStorage {
     public static class stickStorage { // there should only be one of these and action function could be put here
 
         //metadata-----------
-        private final ArrayList<stick> storage = new ArrayList<>(); // stores reference to new array list
+        private ArrayList<stick> storage = new ArrayList<>(); // stores reference to new array list
         //  .add(value)    .get(index)    .remove(index)    .size()
 
         private stick primary = null;
@@ -25,9 +25,20 @@ public class StickStorage {
         // constructor--------
         public stickStorage() {
 
-            stick fists = new stick("fists", 9999, 2, "default");
+            stick fists = new stick("fists", 9999, 2);
             primary = fists;
             storage.add(fists);
+        }
+
+        public stickStorage(ArrayList<stick> saved) { // if theres already saved stuff
+
+            storage = saved;
+
+            if(getByName("fists").isEmpty()) { // make sure theres no fist
+                stick fists = new stick("fists", 9999, 2);
+                primary = fists;
+                storage.add(fists);
+            }
         }
 
 
