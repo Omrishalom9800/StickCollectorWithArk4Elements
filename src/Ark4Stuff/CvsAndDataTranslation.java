@@ -25,14 +25,14 @@ public static String arrayToCvsString(String[] array){// takes the items from ar
     return cvs.toString();// could return an empty string, ""
 }
 
-public static String[] cvsStringToData(String line){ // for convince
+public static String[] cvsStringToData(String line){ // string to array
     return line.split(","); // splits the string up into an array
 }
 
 
 //stick specific methods
 
-public static String[] stickToArray(stick stick){ // converts a stick to a three index array of data
+public static String[] stickToArray(stick stick){ // converts a stick into a three index array of data
     // a sticks constructor is 'name, stif, ans str'
     String[] data = new String[3];
     data[0] = stick.getName();

@@ -64,7 +64,7 @@ public class FileTampering {
 
     public static void writeWithoutClear(String fileName, String text, boolean newLine){
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){ // safety net. makes a writer that will append things,
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){ //  makes a writer that will append the string you put at the lowest line
             // Lines
 
             if(newLine){
@@ -125,7 +125,7 @@ public class FileTampering {
     public static int fileLineCount (String fileName){//how many lines are in the file
         int lineCounter= 1; // for some reason it always gives back one less, so it stars as 1 to offset it
 
-        try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){ // make an file reader obj that will scroll through the file until it find nothing
+        try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){ // make a file reader obj that will scroll through the file until the line is null
 
             while (reader.readLine() != null){
                 lineCounter++;
@@ -139,7 +139,7 @@ public class FileTampering {
     }
 
 
-    public static boolean fileEmpty(String fileName){ // is there something in the file, does not check if we can use the something
+    public static boolean fileEmpty(String fileName){ // is there something in the file?, does not check if we can use the something
 
         File file = new File(fileName);
         if(file.exists()){
