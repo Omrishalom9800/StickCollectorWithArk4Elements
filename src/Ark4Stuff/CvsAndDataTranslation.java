@@ -1,5 +1,8 @@
 package Ark4Stuff;
 
+// I contain methods using file the fileTampering methods that: lets you put data into files correctly, take data out and turn it into useful info correctly,
+// and make it easier to do file manipulation things
+
 import java.util.ArrayList;
 
 //get methods
@@ -63,13 +66,17 @@ public static ArrayList<stick> restoreStickData(){ // search through stick stora
 
         try {
             String cvs = readLineFromFile(stickFileName, i ); // get the line
-            String[] data = cvsStringToData(cvs); //
-            stick stic = dataToStick(data);
+            if(cvs != null) {
+                String[] data = cvsStringToData(cvs); //
+                stick stic = dataToStick(data);
 
-            if(stic != null) {
-                if (!stic.getName().equals("fists")) { // don't copy the default weapon if that's somehow in here
-                    collection.add(stic);
+                if (stic != null) {
+                    if (!stic.getName().equals("fists")) { // don't copy the default weapon if that's somehow in here
+                        collection.add(stic);
+                    }
                 }
+            }else{
+                //print("file "+ stickFileName +", line "+ i+" is null");
             }
         }catch (Exception e){
             //no need to print, this will commonly fail

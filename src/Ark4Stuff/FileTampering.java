@@ -1,5 +1,7 @@
 package Ark4Stuff;
 
+// I contain methods that: get info out of a file, put info in a file, and other file related actions.
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
