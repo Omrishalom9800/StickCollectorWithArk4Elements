@@ -103,7 +103,7 @@ public static ArrayList<stick> restoreStickData(){ // search through stick stora
     // game data specific methods
 
     public static void saveGameState(){ // stores health, level, etc.
-    // not done, ran out of time
+    // I pushed the changes with the completed version of this to github from the school computer. I don't know why it says the project had no changes on my home computer's end.
     }
 
 
