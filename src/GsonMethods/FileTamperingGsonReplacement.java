@@ -1,5 +1,12 @@
 package GsonMethods;
 
+// I have more independent methods that do more simple things,
+// like return 'is there a file?', 'get the stuff in this file', and 'put stuff in this file'.
+// uses json with gson instead of cvs
+
+// the json conversion is incomplete.
+// there may be cvs placeholder methods.
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
