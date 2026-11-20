@@ -1,6 +1,6 @@
 package GsonMethods;
 
-// I have more dependant methods that do multiple things with methods from ,
+// I have more dependant methods that do multiple things with methods from the gson Replacement of file tampering,
 // like 'restore saved sticks', 'save this stick', and 'restore saved game data'.
 // uses json with gson instead of cvs
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import static Classes.Stick.makeRandomWeapon;
 import static Methods.OtherFunctions.pause;
 import static Methods.print.*;
-import static RetiredArk4Stuff.FileTampering.*;
+import static GsonMethods.FileTamperingGsonReplacement.*;
 
 //get classes
 import Classes.Stick.*;
