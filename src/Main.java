@@ -12,7 +12,7 @@ import static Methods.print.*;
 import static RetiredArk4Stuff.FileTampering.*;
 import static RetiredArk4Stuff.CvsAndDataTranslation.*;
 
-// this replaced the file tampering and cvs methods
+// this should replace the file tampering and cvs methods
 //import static GsonMethods.DataTranslationGsonReplacement.*;
 //import static GsonMethods.FileTamperingGsonReplacement.*;
 
